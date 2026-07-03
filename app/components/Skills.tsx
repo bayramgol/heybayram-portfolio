@@ -1,11 +1,12 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { useLang } from "../context/LangContext";
 
 export default function Skills() {
   const { t, skills } = useLang();
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLSpanElement>) => {
+  const handleMouseMove = (event: MouseEvent<HTMLSpanElement>) => {
     const el = event.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;

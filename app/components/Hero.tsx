@@ -1,11 +1,12 @@
 "use client";
 
+import type { MouseEvent } from "react";
 import { useLang } from "../context/LangContext";
 
 export default function Hero() {
   const { t, activity } = useLang();
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
     const el = event.currentTarget;
     const rect = el.getBoundingClientRect();
     const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -23,7 +24,7 @@ export default function Hero() {
               <div className="dot dot-r" />
               <div className="dot dot-y" />
               <div className="dot dot-g" />
-              <span>zsh — 80×24</span>
+              <span>zsh — 120×32</span>
             </div>
             <div className="terminal-body">
               <div className="terminal-line" style={{ animationDelay: "0.1s" }}>
