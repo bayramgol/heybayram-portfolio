@@ -1,11 +1,17 @@
+"use client";
+
+import { useLang } from "../context/LangContext";
+
 export default function Contact() {
+  const { t } = useLang();
+
   return (
     <>
       <section className="section" id="iletisim">
         <div className="container">
           <div className="contact-box">
-            <h2>Bir proje mi var aklında?</h2>
-            <p>Konuşalım — mail at ya da sosyal medyadan ulaş.</p>
+            <h2>{t.contact.title}</h2>
+            <p>{t.contact.subtitle}</p>
             <div className="contact-links">
               <a
                 href="https://github.com/bayramgol"
@@ -13,7 +19,7 @@ export default function Contact() {
                 rel="noopener"
                 className="btn btn-primary"
               >
-                GitHub
+                {t.contact.github}
               </a>
               <a
                 href="https://www.linkedin.com/in/bayramgol"
@@ -21,14 +27,14 @@ export default function Contact() {
                 rel="noopener"
                 className="btn btn-ghost"
               >
-                LinkedIn
+                {t.contact.linkedin}
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <footer>© 2026 Bayram Göl · tüm hakları saklıdır</footer>
+      <footer>{t.contact.footer}</footer>
     </>
   );
 }

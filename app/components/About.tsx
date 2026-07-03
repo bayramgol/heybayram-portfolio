@@ -1,26 +1,28 @@
+"use client";
+
+import { useLang } from "../context/LangContext";
+
 export default function About() {
+  const { t } = useLang();
+
   return (
     <section className="section" id="hakkimda">
       <div className="container">
-        <div className="eyebrow">whoami --verbose</div>
-        <h2 className="section-title">Hakkımda</h2>
+        <div className="eyebrow">{t.about.eyebrow}</div>
+        <h2 className="section-title">{t.about.title}</h2>
         <div className="about-grid">
           <div className="about-text">
             <p>
-              Fikirleri <strong>çalışan ürünlere</strong> dönüştürmeyi seven
-              bir full-stack developer&apos;ım. Arayüzden veritabanına kadar
-              tüm katmanlarda rahat çalışıyorum.
+              {t.about.p1a}
+              <strong>{t.about.p1b}</strong>
+              {t.about.p1c}
             </p>
             <p>
-              Temiz kod, ölçeklenebilir mimari ve{" "}
-              <strong>kullanıcı deneyimini önceleyen</strong> çözümler
-              üretmeye odaklanıyorum. Her projede öğrenmeye açık, detaylara
-              dikkat eden bir yaklaşım benimsiyorum.
+              {t.about.p2a}
+              <strong>{t.about.p2b}</strong>
+              {t.about.p2c}
             </p>
-            <p>
-              İlginç projelerle ilgileniyorum — birlikte bir şeyler inşa
-              etmek istersen aşağıdan ulaşabilirsin.
-            </p>
+            <p>{t.about.p3}</p>
           </div>
           <div className="code-block">
             <span className="c-key">const</span> developer = {"{"}
@@ -30,7 +32,7 @@ export default function About() {
             </span>,
             <br />
             &nbsp;&nbsp;role:{" "}
-            <span className="c-str">&quot;Full-Stack Developer&quot;</span>,
+            <span className="c-str">&quot;{t.about.codeRole}&quot;</span>,
             <br />
             &nbsp;&nbsp;focus: [<span className="c-str">&quot;fullstack&quot;</span>
             , <span className="c-str">&quot;microservis&quot;</span>,{" "}
@@ -40,7 +42,7 @@ export default function About() {
             <span className="c-com">// müsait</span>
             <br />
             &nbsp;&nbsp;location: <span className="c-str">
-              &quot;İstanbul, TR&quot;
+              &quot;{t.about.codeLocation}&quot;
             </span>
             <br />
             {"}"};

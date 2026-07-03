@@ -51,6 +51,22 @@
     background:repeating-linear-gradient(0deg, #fff 0px, transparent 1px, transparent 2px, #fff 3px);
   }
 
+  /* ---------- CURSOR GLOW (Minecraft kılıcı izi) ---------- */
+  .cursor-glow{
+    position:fixed;
+    top:0; left:0;
+    width:420px; height:420px;
+    margin-left:-210px; margin-top:-210px;
+    pointer-events:none;
+    z-index:3;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(0,255,157,0.10) 0%, rgba(124,58,237,0.06) 35%, transparent 70%);
+    mix-blend-mode:screen;
+    will-change:transform;
+  }
+  @media (max-width:640px){ .cursor-glow{display:none;} }
+  @media (prefers-reduced-motion: reduce){ .cursor-glow{display:none;} }
+
   .container{
     max-width:1100px;
     margin:0 auto;
@@ -77,6 +93,9 @@
     display:flex; align-items:center; gap:8px;
   }
   .logo::before{content:"❯"; color:var(--violet);}
+  .nav-right{
+    display:flex; align-items:center; gap:24px;
+  }
   .nav-links{
     display:flex; gap:32px;
     font-family:var(--font-mono);
@@ -89,6 +108,22 @@
   }
   .nav-links a:hover{color:var(--accent);}
   .nav-links a::before{content:"";}
+  .lang-toggle{
+    font-family:var(--font-mono);
+    font-size:12px;
+    font-weight:700;
+    color:var(--accent);
+    background:var(--accent-dim);
+    border:1px solid var(--accent);
+    border-radius:5px;
+    padding:5px 10px;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .lang-toggle:hover{
+    background:var(--accent);
+    color:#000;
+  }
   @media (max-width:640px){ .nav-links{display:none;} }
 
   /* ---------- HERO / TERMINAL ---------- */
@@ -100,12 +135,31 @@
   }
 
   .terminal-window{
+    position:relative;
     background:var(--surface);
     border:1px solid var(--border);
     border-radius:10px;
     overflow:hidden;
     box-shadow:0 30px 80px -20px rgba(0,255,157,0.08), 0 0 0 1px rgba(255,255,255,0.02);
     max-width:720px;
+    isolation:isolate;
+  }
+  .terminal-window::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    z-index:-1;
+    border-radius:10px;
+    background:radial-gradient(
+      260px circle at var(--mx, 50%) var(--my, 0%),
+      rgba(0,255,157,0.18),
+      transparent 70%
+    );
+    opacity:0;
+    transition:opacity 0.4s ease;
+  }
+  .terminal-window:hover::before{
+    opacity:1;
   }
   .terminal-titlebar{
     display:flex; align-items:center; gap:8px;
@@ -327,6 +381,7 @@
     gap:14px;
   }
   .skill-pill{
+    position:relative;
     background:var(--surface);
     border:1px solid var(--border);
     border-radius:8px;
@@ -334,9 +389,31 @@
     font-family:var(--font-mono);
     font-size:13.5px;
     display:flex; align-items:center; justify-content:space-between;
-    transition:border-color 0.2s;
+    transition:border-color 0.25s, transform 0.2s;
+    overflow:hidden;
+    isolation:isolate;
   }
-  .skill-pill:hover{ border-color:var(--accent-dim); }
+  .skill-pill::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+    z-index:-1;
+    border-radius:8px;
+    background:radial-gradient(
+      180px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(0,255,157,0.35),
+      transparent 70%
+    );
+    opacity:0;
+    transition:opacity 0.3s ease;
+  }
+  .skill-pill:hover{
+    border-color:var(--accent-dim);
+    transform:translateY(-2px);
+  }
+  .skill-pill:hover::before{
+    opacity:1;
+  }
   .skill-name{ color:var(--text); }
   .skill-idx{ color:var(--text-faint); font-size:11px; }
 
