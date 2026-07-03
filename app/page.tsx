@@ -1,8 +1,7 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import Dashboard from "./components/Dashboard";
+import ProfileJson from "./components/ProfileJson";
 import Skills from "./components/Skills";
-import Experience from "./components/Experience";
 import GithubActivity from "./components/GithubActivity";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -15,9 +14,8 @@ export default function Home() {
       <CursorGlow />
       <Nav />
       <Hero />
-      <Dashboard />
+      <ProfileJson />
       <Skills />
-      <Experience />
       <GithubActivity />
       <About />
       <Contact />

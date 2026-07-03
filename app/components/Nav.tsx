@@ -13,9 +13,8 @@ export default function Nav() {
         </a>
         <div className="nav-right">
           <div className="nav-links">
-            <a href="#dashboard">{t.nav.dashboard}</a>
+            <a href="#profil">{t.nav.profile}</a>
             <a href="#yetenekler">{t.nav.skills}</a>
-            <a href="#deneyim">{t.nav.experience}</a>
             <a href="#github">{t.nav.github}</a>
             <a href="#hakkimda">{t.nav.about}</a>
             <a href="#iletisim">{t.nav.contact}</a>

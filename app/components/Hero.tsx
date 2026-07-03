@@ -3,7 +3,7 @@
 import { useLang } from "../context/LangContext";
 
 export default function Hero() {
-  const { t } = useLang();
+  const { t, activity } = useLang();
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const el = event.currentTarget;
@@ -55,7 +55,7 @@ export default function Hero() {
           </div>
 
           <div className="hero-cta">
-            <a href="#dashboard" className="btn btn-primary">
+            <a href="#profil" className="btn btn-primary">
               {t.hero.ctaPrimary}
             </a>
             <a href="#iletisim" className="btn btn-ghost">
@@ -67,18 +67,20 @@ export default function Hero() {
         <aside className="hero-side-card" aria-label="Core stack">
           <div className="side-card-top">
             <span className="pulse" />
-            online_profile
+            {t.hero.sideTitle}
           </div>
           <div className="stack-orbit">
-            <span>{t.hero.badgeOne}</span>
-            <span>{t.hero.badgeTwo}</span>
-            <span>{t.hero.badgeThree}</span>
+            <span>{t.hero.sideOne}</span>
+            <span>{t.hero.sideTwo}</span>
+            <span>{t.hero.sideThree}</span>
           </div>
-          <div className="mini-bars" aria-hidden="true">
-            <i style={{ width: "86%" }} />
-            <i style={{ width: "74%" }} />
-            <i style={{ width: "92%" }} />
-            <i style={{ width: "66%" }} />
+          <div className="activity-list">
+            {activity.map((item) => (
+              <div className="activity-row" key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+            ))}
           </div>
         </aside>
       </div>

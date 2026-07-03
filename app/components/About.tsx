@@ -9,7 +9,7 @@ export default function About() {
     <section className="section" id="hakkimda">
       <div className="container">
         <div className="eyebrow">{t.about.eyebrow}</div>
-        <h2 className="section-title">{t.about.title}</h2>
+        <h2 className="section-title about-title-gap">{t.about.title}</h2>
         <div className="about-grid">
           <div className="about-text">
             <p>
@@ -24,20 +24,21 @@ export default function About() {
             </p>
             <p>{t.about.p3}</p>
           </div>
+
           <div className="code-block">
-            <span className="c-key">const</span> developer = {"{"}
+            <span className="c-key">const</span> developer = <span className="c-punc">{'{'}</span>
             <br />
             &nbsp;&nbsp;name: <span className="c-str">&quot;Bayram Göl&quot;</span>,
             <br />
-            &nbsp;&nbsp;role: <span className="c-str">&quot;{t.about.codeRole}&quot;</span>,
+            &nbsp;&nbsp;role: <span className="c-str">&quot;Software Development Specialist&quot;</span>,
             <br />
-            &nbsp;&nbsp;mode: <span className="c-str">&quot;{t.about.codeMode}&quot;</span>,
+            &nbsp;&nbsp;stack: [<span className="c-str">&quot;Java&quot;</span>, <span className="c-str">&quot;Spring Boot&quot;</span>, <span className="c-str">&quot;Angular&quot;</span>],
             <br />
-            &nbsp;&nbsp;focus: [<span className="c-str">&quot;backend&quot;</span>, <span className="c-str">&quot;frontend&quot;</span>, <span className="c-str">&quot;automation&quot;</span>],
+            &nbsp;&nbsp;mindset: <span className="c-str">&quot;clean-code-first&quot;</span>,
             <br />
-            &nbsp;&nbsp;location: <span className="c-str">&quot;{t.about.codeLocation}&quot;</span>
+            &nbsp;&nbsp;location: <span className="c-str">&quot;Istanbul, TR&quot;</span>
             <br />
-            {"}"};
+            <span className="c-punc">{'}'}</span>;
           </div>
         </div>
       </div>

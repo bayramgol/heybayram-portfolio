@@ -5,7 +5,7 @@ import { LangProvider } from "./context/LangContext";
 export const metadata: Metadata = {
   title: "Bayram Göl — Software Development Specialist",
   description:
-    "Bayram Göl professional developer dashboard. Java, Spring Boot, Angular, microservices, DevOps, and GitHub activity.",
+    "Bayram Göl developer profile. Java, Spring Boot, Angular, microservices, DevOps, and GitHub activity.",
 };
 
 export default function RootLayout({
