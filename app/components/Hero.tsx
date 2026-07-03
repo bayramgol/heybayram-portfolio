@@ -28,7 +28,7 @@ export default function Hero() {
               </span>
               <br />
               <span className="hero-role">
-                Full-Stack Developer — arayüzden veritabanına kadar
+                Full-Stack Developer, Part-time Homo Sapiens
               </span>
             </p>
             <div className="terminal-line" style={{ animationDelay: "0.9s" }}>
@@ -43,7 +43,7 @@ export default function Hero() {
                 opacity: 0,
               }}
             >
-              → Yeni projelere açık · React / Node / PostgreSQL ile çalışıyor
+              → &quot;İmkânın Sınırını Görmek İçin İmkânsızı Denemek Lazım.&quot; — Fatih Sultan Mehmet
             </p>
           </div>
         </div>

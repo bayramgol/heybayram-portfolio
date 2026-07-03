@@ -42,12 +42,15 @@ export const projects: Project[] = [
 ];
 
 export const skills: string[] = [
+  "Java / Spring Boot",
+  "Microservis Mimarisi",
+  "Angular",
   "JavaScript / TypeScript",
   "React / Next.js",
   "Node.js / Express",
   "PostgreSQL / MongoDB",
   "Docker",
-  "Git / CI-CD",
+  "CI/CD",
   "REST / GraphQL",
   "AWS / Vercel",
 ];

@@ -33,9 +33,9 @@ export default function About() {
             &nbsp;&nbsp;role:{" "}
             <span className="c-str">&quot;Full-Stack Developer&quot;</span>,
             <br />
-            &nbsp;&nbsp;focus: [<span className="c-str">&quot;web&quot;</span>
-            , <span className="c-str">&quot;api&quot;</span>,{" "}
-            <span className="c-str">&quot;ux&quot;</span>],
+            &nbsp;&nbsp;focus: [<span className="c-str">&quot;fullstack&quot;</span>
+            , <span className="c-str">&quot;microservis&quot;</span>,{" "}
+            <span className="c-str">&quot;api&quot;</span>],
             <br />
             &nbsp;&nbsp;available: <span className="c-key">true</span>,{" "}
             <span className="c-com">// müsait</span>
