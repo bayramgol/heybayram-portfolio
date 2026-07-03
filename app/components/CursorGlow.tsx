@@ -6,7 +6,6 @@ export default function CursorGlow() {
   const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Dokunmatik cihazlarda mouse takibi anlamsız, atla
     const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch) return;
 
@@ -16,13 +15,12 @@ export default function CursorGlow() {
     let currentY = targetY;
     let rafId: number;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
+    const handleMouseMove = (event: MouseEvent) => {
+      targetX = event.clientX;
+      targetY = event.clientY;
     };
 
     const animate = () => {
-      // Yumuşak takip (lerp) - anlık zıplama yerine kılıcın "iz" bırakması hissi
       currentX += (targetX - currentX) * 0.12;
       currentY += (targetY - currentY) * 0.12;
 

@@ -5,11 +5,11 @@ import { useLang } from "../context/LangContext";
 export default function Skills() {
   const { t, skills } = useLang();
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.currentTarget;
+  const handleMouseMove = (event: React.MouseEvent<HTMLSpanElement>) => {
+    const el = event.currentTarget;
     const rect = el.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    const x = ((event.clientX - rect.left) / rect.width) * 100;
+    const y = ((event.clientY - rect.top) / rect.height) * 100;
     el.style.setProperty("--mx", `${x}%`);
     el.style.setProperty("--my", `${y}%`);
   };
@@ -18,19 +18,23 @@ export default function Skills() {
     <section className="section" id="yetenekler">
       <div className="container">
         <div className="eyebrow">{t.skills.eyebrow}</div>
-        <h2 className="section-title">{t.skills.title}</h2>
-        <div className="skills-grid">
-          {skills.map((skill, i) => (
-            <div
-              className="skill-pill"
-              key={skill}
-              onMouseMove={handleMouseMove}
-            >
-              <span className="skill-name">{skill}</span>
-              <span className="skill-idx">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
+        <div className="section-head-row">
+          <h2 className="section-title">{t.skills.title}</h2>
+          <p className="section-subtitle">{t.skills.subtitle}</p>
+        </div>
+
+        <div className="skill-groups">
+          {skills.map((group) => (
+            <article className="skill-group" key={group.group}>
+              <h3>{group.group}</h3>
+              <div className="skills-grid compact">
+                {group.items.map((skill) => (
+                  <span className="skill-pill" key={skill} onMouseMove={handleMouseMove}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </div>

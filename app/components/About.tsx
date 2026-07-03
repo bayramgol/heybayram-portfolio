@@ -27,23 +27,15 @@ export default function About() {
           <div className="code-block">
             <span className="c-key">const</span> developer = {"{"}
             <br />
-            &nbsp;&nbsp;name: <span className="c-str">
-              &quot;Bayram Göl&quot;
-            </span>,
+            &nbsp;&nbsp;name: <span className="c-str">&quot;Bayram Göl&quot;</span>,
             <br />
-            &nbsp;&nbsp;role:{" "}
-            <span className="c-str">&quot;{t.about.codeRole}&quot;</span>,
+            &nbsp;&nbsp;role: <span className="c-str">&quot;{t.about.codeRole}&quot;</span>,
             <br />
-            &nbsp;&nbsp;focus: [<span className="c-str">&quot;fullstack&quot;</span>
-            , <span className="c-str">&quot;microservis&quot;</span>,{" "}
-            <span className="c-str">&quot;api&quot;</span>],
+            &nbsp;&nbsp;mode: <span className="c-str">&quot;{t.about.codeMode}&quot;</span>,
             <br />
-            &nbsp;&nbsp;available: <span className="c-key">true</span>,{" "}
-            <span className="c-com">// müsait</span>
+            &nbsp;&nbsp;focus: [<span className="c-str">&quot;backend&quot;</span>, <span className="c-str">&quot;frontend&quot;</span>, <span className="c-str">&quot;automation&quot;</span>],
             <br />
-            &nbsp;&nbsp;location: <span className="c-str">
-              &quot;{t.about.codeLocation}&quot;
-            </span>
+            &nbsp;&nbsp;location: <span className="c-str">&quot;{t.about.codeLocation}&quot;</span>
             <br />
             {"}"};
           </div>
