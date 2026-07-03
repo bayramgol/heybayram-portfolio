@@ -23,7 +23,7 @@ export default function Hero() {
               }}
             >
               <span className="hero-name">
-                İsim <span className="accent-text">Soyisim</span>
+                Bayram <span className="accent-text">Göl</span>
                 <span className="cursor"></span>
               </span>
               <br />
@@ -49,8 +49,8 @@ export default function Hero() {
         </div>
 
         <div className="hero-cta">
-          <a href="#projeler" className="btn btn-primary">
-            ./projeleri-gor.sh
+          <a href="#hakkimda" className="btn btn-primary">
+            ./hakkimda-oku.sh
           </a>
           <a href="#iletisim" className="btn btn-ghost">
             iletişime geç →

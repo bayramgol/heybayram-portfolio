@@ -27,7 +27,7 @@ export default function About() {
             <span className="c-key">const</span> developer = {"{"}
             <br />
             &nbsp;&nbsp;name: <span className="c-str">
-              &quot;İsim Soyisim&quot;
+              &quot;Bayram Göl&quot;
             </span>,
             <br />
             &nbsp;&nbsp;role:{" "}
