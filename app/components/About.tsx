@@ -18,9 +18,8 @@ export default function About() {
               dikkat eden bir yaklaşım benimsiyorum.
             </p>
             <p>
-              Şu anda yeni fırsatlara ve ilginç projelere{" "}
-              <strong>açığım</strong> — birlikte bir şeyler inşa etmek
-              istersen aşağıdan ulaşabilirsin.
+              İlginç projelerle ilgileniyorum — birlikte bir şeyler inşa
+              etmek istersen aşağıdan ulaşabilirsin.
             </p>
           </div>
           <div className="code-block">

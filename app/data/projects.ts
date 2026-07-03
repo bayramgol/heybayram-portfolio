@@ -48,9 +48,8 @@ export const skills: string[] = [
   "JavaScript / TypeScript",
   "React / Next.js",
   "Node.js / Express",
-  "PostgreSQL / MongoDB",
+  "MSSQL / Couchbase",
   "Docker",
   "CI/CD",
   "REST / GraphQL",
-  "AWS / Vercel",
 ];
