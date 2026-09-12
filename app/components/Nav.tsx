@@ -18,6 +18,7 @@ export default function Nav() {
             <a href="#github">{t.nav.github}</a>
             <a href="#hakkimda">{t.nav.about}</a>
             <a href="#iletisim">{t.nav.contact}</a>
+            <a href="/imdb">{t.nav.imdb}</a>
           </div>
           <button
             className="lang-toggle"

@@ -8,6 +8,7 @@ export type Dictionary = {
     github: string;
     about: string;
     contact: string;
+    imdb: string;
   };
   hero: {
     whoami: string;
@@ -114,6 +115,7 @@ export const dictionary: Record<Lang, Dictionary> = {
       github: "github",
       about: "hakkımda",
       contact: "iletişim",
+      imdb: "imdb",
     },
     hero: {
       whoami: "whoami",
@@ -192,6 +194,7 @@ export const dictionary: Record<Lang, Dictionary> = {
       github: "github",
       about: "about",
       contact: "contact",
+      imdb: "imdb",
     },
     hero: {
       whoami: "whoami",
