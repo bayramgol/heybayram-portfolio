@@ -66,13 +66,6 @@ export type Dictionary = {
   about: {
     eyebrow: string;
     title: string;
-    p1a: string;
-    p1b: string;
-    p1c: string;
-    p2a: string;
-    p2b: string;
-    p2c: string;
-    p3: string;
   };
   contact: {
     title: string;
@@ -200,14 +193,6 @@ export const dictionary: Record<Lang, Dictionary> = {
     about: {
       eyebrow: "whoami --verbose",
       title: "Hakkımda",
-      p1a: "Backend ağırlıklı çalışan, gerektiğinde frontend tarafını da sahiplenen ",
-      p1b: "full-stack developer",
-      p1c:
-        " yaklaşımına sahibim. İş ihtiyacını anlayıp bunu okunabilir ve sürdürülebilir çözüme çevirmeye odaklanıyorum.",
-      p2a: "Günlük çalışma alanımda Java Spring Boot, Angular, mikroservis mimarisi, CI/CD ve ",
-      p2b: "entegrasyon süreçleri",
-      p2c: " öne çıkıyor. Temiz kod, performans ve izlenebilirlik tarafını özellikle önemsiyorum.",
-      p3: "Bu sayfa kişisel proje kataloğu gibi değil; daha çok profesyonel profil, stack ve GitHub aktivitesi vitrini gibi kurgulandı.",
     },
     contact: {
       title: "Bir şey geliştirelim mi?",
@@ -313,14 +298,6 @@ export const dictionary: Record<Lang, Dictionary> = {
     about: {
       eyebrow: "whoami --verbose",
       title: "About Me",
-      p1a: "I work mainly on backend development while comfortably owning frontend tasks when needed, with a ",
-      p1b: "full-stack developer",
-      p1c:
-        " mindset. I focus on understanding business needs and turning them into readable and maintainable software.",
-      p2a: "My daily work includes Java Spring Boot, Angular, microservice architecture, CI/CD, and ",
-      p2b: "integration workflows",
-      p2c: ". I especially care about clean code, performance, and observability.",
-      p3: "This page is shaped as a professional profile, stack, and GitHub activity showcase rather than a personal project catalog.",
     },
     contact: {
       title: "Shall we build something?",

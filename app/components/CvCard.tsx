@@ -13,7 +13,7 @@ export default function CvCard() {
       <div className="cv-name">
         {site.firstName} <span>{site.lastName}</span>
       </div>
-      <div className="cv-role">{site.headlineStack.join(" / ")}</div>
+      <div className="cv-role">{site.title}</div>
       <div className="cv-meta">
         <span>{site.location}</span>
         <span>{site.englishLevel}</span>

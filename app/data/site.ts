@@ -31,17 +31,17 @@ export const site = {
   name: `${firstName} ${lastName}`,
   title: "Software Development Specialist",
   location: "Istanbul, TR",
-  englishLevel: "English B2 → C1",
+  englishLevel: "English B2",
   /** Portre dosyası (public/ altında). Gerçek fotoğraf için bu yolu değiştirmek yeter. */
   portrait: "/portrait.jpg",
 
   /** Hero ve "hakkımda" kod bloğunda görünen kısa yığın */
-  headlineStack: ["Java", "Spring Boot", "Angular"],
-  highlights: ["Java / Spring Boot", "Angular / TypeScript", "Docker / Jenkins"],
-  focus: ["backend", "api-design", "microservices", "full-stack"],
+  headlineStack: ["Java", "Full-stack", "Microservices"],
+  highlights: ["Java", "Full-stack", "Microservices"],
+  focus: ["java", "full-stack", "microservices"],
 
   contact: {
-    email: "bayram.gol66@gmail.com",
+    email: "bayram@heybayram.dev",
     githubUser,
     githubUrl: `https://github.com/${githubUser}`,
     githubDisplay: `github.com/${githubUser}`,

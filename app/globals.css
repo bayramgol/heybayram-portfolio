@@ -595,17 +595,8 @@ main:focus{outline:none;}
 
 /* ---------- ABOUT ---------- */
 .about-title-gap{margin-bottom:36px;text-align:center;}
-.about-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:start;}
-.about-text p{
-  color:var(--text-dim);
-  font-size:16.5px;
-  margin-bottom:18px;
-  max-width:62ch;
-  text-wrap:pretty;
-}
-.about-text strong{color:var(--text);font-weight:700;}
+.about-code{max-width:560px;margin:0 auto;}
 .code-block{border-radius:12px;overflow:hidden;}
-@container editor (max-width: 800px){.about-grid{grid-template-columns:1fr;}}
 
 /* ---------- CONTACT ---------- */
 .contact-box{border-radius:14px;padding:52px 32px;text-align:center;}
