@@ -2,7 +2,9 @@
 
 import { useLang } from "../context/LangContext";
 import { useShell } from "../context/ShellContext";
+import { sprites } from "../data/pixel";
 import { sectionFiles, site } from "../data/site";
+import PixelIcon from "./PixelIcon";
 
 /** Sol dosya ağacı: bölümler "dosya" olarak listelenir, aktif bölüm vurgulanır. */
 export default function Explorer() {
@@ -12,10 +14,10 @@ export default function Explorer() {
   return (
     <aside className="explorer" aria-label={t.shell.explorer}>
       <div className="explorer-root">
-        <span aria-hidden="true">▾</span> {site.contact.githubUser}
+        <PixelIcon name="grass" scale={1} /> {site.contact.githubUser}
       </div>
       <ul className="explorer-list">
-        {sectionFiles.map(({ id, file, nav }) => {
+        {sectionFiles.map(({ id, file, nav, icon }) => {
           const active = activeId === id;
           const label = nav ? t.nav[nav] : file;
           return (
@@ -26,7 +28,9 @@ export default function Explorer() {
                 aria-current={active ? "location" : undefined}
                 aria-label={nav ? `${label} (${file})` : file}
               >
-                <span className="explorer-icon" aria-hidden="true">{file.endsWith(".json") ? "{}" : file.endsWith(".sh") ? "$" : "≡"}</span>
+                <span className="explorer-icon">
+                  <PixelIcon name={icon} scale={sprites[icon].length <= 9 ? 2 : 1} />
+                </span>
                 {file}
               </a>
             </li>

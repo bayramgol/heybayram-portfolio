@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLang } from "../context/LangContext";
+import PixelIcon from "./PixelIcon";
 
 /** Dar ekranlarda (dosya ağacının gizlendiği yerde) üst çubuk ve açılır menü. */
 export default function Nav() {
@@ -45,9 +46,7 @@ export default function Nav() {
               aria-controls="nav-links"
               aria-label={menuOpen ? t.nav.menuClose : t.nav.menuOpen}
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                {menuOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-              </svg>
+              <PixelIcon name={menuOpen ? "close" : "menu"} scale={3} />
             </button>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useLang } from "../context/LangContext";
 import { site } from "../data/site";
+import PixelIcon from "./PixelIcon";
 
 export default function Contact() {
   const { t } = useLang();
@@ -11,6 +12,11 @@ export default function Contact() {
       <section className="section" id="iletisim">
         <div className="container">
           <div className="contact-box">
+            <div className="contact-pixels" aria-hidden="true">
+              <PixelIcon name="pickaxe" scale={3} />
+              <PixelIcon name="heart" scale={4} />
+              <PixelIcon name="sword" scale={3} />
+            </div>
             <h2>{t.contact.title}</h2>
             <p>{t.contact.subtitle}</p>
             <div className="contact-links">

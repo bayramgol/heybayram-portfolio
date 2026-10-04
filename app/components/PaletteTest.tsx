@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { useLang } from "../context/LangContext";
+import PixelIcon from "./PixelIcon";
 
 /**
  * Renk denemesi paneli. Yalnızca <html data-tone / data-accent> özniteliklerini
@@ -107,12 +108,7 @@ export default function PaletteTest({ open, onToggle }: { open: boolean; onToggl
         aria-controls="palette-panel"
         aria-label={open ? t.palette.close : t.palette.open}
       >
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.8-.9 1.8-1.8 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.8 1.8-1.8H17a4 4 0 0 0 4-4c0-4.4-4-8-9-8z" />
-          <circle cx="7.5" cy="11" r="1" />
-          <circle cx="10" cy="7" r="1" />
-          <circle cx="14.5" cy="7" r="1" />
-        </svg>
+        <PixelIcon name="palette" scale={2} />
       </button>
     </div>
   );

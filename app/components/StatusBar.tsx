@@ -6,6 +6,7 @@ import { useShell } from "../context/ShellContext";
 import { sectionFiles, trophyIds } from "../data/site";
 import { LangToggle, ThemeToggle } from "./Controls";
 import PaletteTest from "./PaletteTest";
+import PixelIcon from "./PixelIcon";
 
 type Panel = "trophies" | "palette" | null;
 
@@ -56,7 +57,11 @@ export default function StatusBar() {
         <span className="sb-branch">⎇ main</span>
         <span className="sb-file">{file}</span>
         <span className="sb-toast" aria-live="polite">
-          {lastUnlocked ? `★ ${t.shell.trophyNames[lastUnlocked]} · ${t.shell.unlocked}` : ""}
+          {lastUnlocked ? (
+            <>
+              <PixelIcon name="xp" scale={2} /> {t.shell.trophyNames[lastUnlocked]} · {t.shell.unlocked}
+            </>
+          ) : null}
         </span>
       </div>
 
@@ -70,7 +75,9 @@ export default function StatusBar() {
               <ul className="trophy-list">
                 {trophyIds.map((id) => (
                   <li key={id} data-done={unlocked.has(id)}>
-                    <span aria-hidden="true">{unlocked.has(id) ? "★" : "☆"}</span>
+                    <span className="trophy-icon" data-done={unlocked.has(id)}>
+                      <PixelIcon name="xp" scale={2} />
+                    </span>
                     {t.shell.trophyNames[id]}
                   </li>
                 ))}
@@ -85,7 +92,8 @@ export default function StatusBar() {
             aria-controls="trophy-panel"
             aria-label={panel === "trophies" ? t.shell.trophiesClose : t.shell.trophiesOpen}
           >
-            ★ {unlocked.size}/{total}
+            <PixelIcon name="xp" scale={2} />
+            <span className="sb-count">{unlocked.size}/{total}</span>
           </button>
         </div>
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "./context/LangContext";
 import { ShellProvider } from "./context/ShellContext";
@@ -12,10 +12,11 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const sans = Space_Grotesk({
+// Başlık ve gövde için tek aile (optik boyut eksenli: büyük boyutta daha keskin, küçükte okunaklı).
+const sans = Bricolage_Grotesque({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "700"],
-  variable: "--font-space",
+  axes: ["opsz"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 

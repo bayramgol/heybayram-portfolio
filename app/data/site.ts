@@ -13,14 +13,16 @@ const linkedinHandle = "bayramgol";
 export const trophyIds = ["profil", "yetenekler", "github", "hakkimda", "iletisim", "theme", "lang"] as const;
 export type TrophyId = (typeof trophyIds)[number];
 
+import type { SpriteName } from "./pixel";
+
 /** Editör düzeninde her bölümün "dosya adı"; bölüm kimlikleri sayfadaki #id'lerdir. */
 export const sectionFiles = [
-  { id: "top", file: "README.md", nav: null },
-  { id: "profil", file: "profile.json", nav: "profile" },
-  { id: "yetenekler", file: "skills.json", nav: "skills" },
-  { id: "github", file: "activity.json", nav: "github" },
-  { id: "hakkimda", file: "about.md", nav: "about" },
-  { id: "iletisim", file: "contact.sh", nav: "contact" },
+  { id: "top", file: "README.md", nav: null, icon: "book" as SpriteName },
+  { id: "profil", file: "profile.json", nav: "profile", icon: "steve" as SpriteName },
+  { id: "yetenekler", file: "skills.json", nav: "skills", icon: "pickaxe" as SpriteName },
+  { id: "github", file: "activity.json", nav: "github", icon: "diamond" as SpriteName },
+  { id: "hakkimda", file: "about.md", nav: "about", icon: "sign" as SpriteName },
+  { id: "iletisim", file: "contact.sh", nav: "contact", icon: "pearl" as SpriteName },
 ] as const;
 
 export const site = {
