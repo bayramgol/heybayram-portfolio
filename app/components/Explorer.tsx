@@ -2,9 +2,8 @@
 
 import { useLang } from "../context/LangContext";
 import { useShell } from "../context/ShellContext";
-import { sprites } from "../data/pixel";
 import { sectionFiles, site } from "../data/site";
-import PixelIcon from "./PixelIcon";
+import McImage from "./McImage";
 
 /** Sol dosya ağacı: bölümler "dosya" olarak listelenir, aktif bölüm vurgulanır. */
 export default function Explorer() {
@@ -14,7 +13,7 @@ export default function Explorer() {
   return (
     <aside className="explorer" aria-label={t.shell.explorer}>
       <div className="explorer-root">
-        <PixelIcon name="grass" scale={1} /> {site.contact.githubUser}
+        <McImage name="logo" size={30} className="explorer-logo" priority /> {site.contact.githubUser}
       </div>
       <ul className="explorer-list">
         {sectionFiles.map(({ id, file, nav, icon }) => {
@@ -29,7 +28,7 @@ export default function Explorer() {
                 aria-label={nav ? `${label} (${file})` : file}
               >
                 <span className="explorer-icon">
-                  <PixelIcon name={icon} scale={sprites[icon].length <= 9 ? 2 : 1} />
+                  <McImage name={icon} size={32} className="mc-item" />
                 </span>
                 {file}
               </a>

@@ -136,8 +136,8 @@ main:focus{outline:none;}
   padding:12px 24px;
   max-width:1160px;margin:0 auto;
 }
-.logo{font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--accent);white-space:nowrap;}
-.logo::before{content:"❯ ";color:var(--text-muted);}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-weight:700;font-size:14px;color:var(--accent);white-space:nowrap;}
+.logo img{display:block;}
 .nav-right{display:flex;align-items:center;gap:12px;}
 .nav-links{display:flex;gap:22px;font-family:var(--font-mono);font-size:13px;}
 .nav-links a{color:var(--text-dim);transition:color .2s ease;white-space:nowrap;}
@@ -185,11 +185,12 @@ main:focus{outline:none;}
   overflow:auto;
 }
 @media (min-width:1000px){.explorer{display:flex;}}
-.explorer-root{display:flex;align-items:center;gap:8px;padding:4px 16px 10px;color:var(--text);font-weight:700;}
+.explorer-root{display:flex;align-items:center;gap:10px;padding:2px 16px 10px;color:var(--text);font-weight:700;}
+.explorer-logo{display:block;}
 .explorer-list{list-style:none;}
 .explorer-file{
   display:flex;align-items:center;gap:10px;
-  padding:7px 16px 7px 26px;
+  padding:3px 16px 3px 20px;
   color:var(--text-dim);
   border-left:2px solid transparent;
   transition:color .2s ease, background-color .2s ease;
@@ -198,7 +199,8 @@ main:focus{outline:none;}
 .explorer-file[aria-current="location"]{
   color:var(--accent);background:var(--accent-soft);border-left-color:var(--accent);
 }
-.explorer-icon{display:inline-flex;align-items:center;justify-content:center;width:18px;flex:none;}
+.explorer-icon{display:inline-flex;align-items:center;justify-content:center;width:32px;flex:none;}
+.explorer-icon img{display:block;}
 .explorer-foot{
   margin-top:auto;
   padding:12px 16px 0;
@@ -709,3 +711,11 @@ footer{
   .hero-pixels{display:none;}
   .hero-pixels-row{display:flex;}
 }
+
+/* Minecraft görselleri (heybayram-minecraft-web-pack) */
+.mc-render,.mc-item{display:block;max-width:none;user-select:none;-webkit-user-drag:none;}
+.mc-item{image-rendering:pixelated;}
+.hero-pixels .mc-render{width:clamp(110px, 17cqi, 190px);height:auto;}
+.hero-pixels .mc-item{width:96px;height:auto;}
+.hero-pixels-row .mc-render{width:84px;height:auto;}
+.sb-btn img,.trophy-icon img,.sb-toast img{display:block;image-rendering:pixelated;}

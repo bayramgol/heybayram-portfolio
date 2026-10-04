@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLang } from "../context/LangContext";
+import McImage from "./McImage";
 import PixelIcon from "./PixelIcon";
 
 /** Dar ekranlarda (dosya ağacının gizlendiği yerde) üst çubuk ve açılır menü. */
@@ -28,6 +29,7 @@ export default function Nav() {
       <nav className="mobile-nav">
         <div className="nav-inner">
           <a className="logo" href="#top" aria-label={t.nav.homeLabel}>
+            <McImage name="logo" size={28} priority />
             {t.nav.logo}
           </a>
           <div className="nav-right">

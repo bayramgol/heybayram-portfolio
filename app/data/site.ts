@@ -13,16 +13,16 @@ const linkedinHandle = "bayramgol";
 export const trophyIds = ["profil", "yetenekler", "github", "hakkimda", "iletisim", "theme", "lang"] as const;
 export type TrophyId = (typeof trophyIds)[number];
 
-import type { SpriteName } from "./pixel";
+import type { McName } from "./minecraft";
 
 /** Editör düzeninde her bölümün "dosya adı"; bölüm kimlikleri sayfadaki #id'lerdir. */
 export const sectionFiles = [
-  { id: "top", file: "README.md", nav: null, icon: "book" as SpriteName },
-  { id: "profil", file: "profile.json", nav: "profile", icon: "steve" as SpriteName },
-  { id: "yetenekler", file: "skills.json", nav: "skills", icon: "pickaxe" as SpriteName },
-  { id: "github", file: "activity.json", nav: "github", icon: "diamond" as SpriteName },
-  { id: "hakkimda", file: "about.md", nav: "about", icon: "sign" as SpriteName },
-  { id: "iletisim", file: "contact.sh", nav: "contact", icon: "pearl" as SpriteName },
+  { id: "top", file: "README.md", nav: null, icon: "bookshelf" as McName },
+  { id: "profil", file: "profile.json", nav: "profile", icon: "craftingTable" as McName },
+  { id: "yetenekler", file: "skills.json", nav: "skills", icon: "pickaxeSmall" as McName },
+  { id: "github", file: "activity.json", nav: "github", icon: "clockSmall" as McName },
+  { id: "hakkimda", file: "about.md", nav: "about", icon: "torchSmall" as McName },
+  { id: "iletisim", file: "contact.sh", nav: "contact", icon: "arrowSmall" as McName },
 ] as const;
 
 export const site = {

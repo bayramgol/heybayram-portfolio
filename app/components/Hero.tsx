@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import { useLang } from "../context/LangContext";
-import PixelIcon from "./PixelIcon";
+import McImage from "./McImage";
 import Portrait from "./Portrait";
 
 const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
@@ -14,12 +14,12 @@ export default function Hero() {
     <header className="hero" id="top">
       <div className="hero-inner">
         <div className="hero-pixels left" aria-hidden="true">
-          <PixelIcon name="creeper" scale={8} className="px" />
-          <PixelIcon name="steve" scale={6} className="px" />
+          <McImage name="creeper" size={190} className="px mc-render" priority />
+          <McImage name="pickaxe" size={96} className="px mc-item" priority />
         </div>
         <div className="hero-pixels right" aria-hidden="true">
-          <PixelIcon name="enderman" scale={8} className="px" />
-          <PixelIcon name="diamond" scale={4} className="px" />
+          <McImage name="enderman" size={190} className="px mc-render" priority />
+          <McImage name="sword" size={96} className="px mc-item" priority />
         </div>
 
         <div className="hero-text">
@@ -42,10 +42,9 @@ export default function Hero() {
           </ul>
 
           <div className="hero-pixels-row" aria-hidden="true">
-            <PixelIcon name="creeper" scale={4} />
-            <PixelIcon name="steve" scale={4} />
-            <PixelIcon name="enderman" scale={4} />
-            <PixelIcon name="diamond" scale={3} />
+            <McImage name="creeper" size={88} className="mc-render" />
+            <McImage name="steve" size={88} className="mc-render" />
+            <McImage name="enderman" size={88} className="mc-render" />
           </div>
 
           <div className="hero-cta reveal" style={delay(0.6)}>

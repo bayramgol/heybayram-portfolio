@@ -6,7 +6,7 @@ import { useShell } from "../context/ShellContext";
 import { sectionFiles, trophyIds } from "../data/site";
 import { LangToggle, ThemeToggle } from "./Controls";
 import PaletteTest from "./PaletteTest";
-import PixelIcon from "./PixelIcon";
+import McImage from "./McImage";
 
 type Panel = "trophies" | "palette" | null;
 
@@ -59,7 +59,7 @@ export default function StatusBar() {
         <span className="sb-toast" aria-live="polite">
           {lastUnlocked ? (
             <>
-              <PixelIcon name="xp" scale={2} /> {t.shell.trophyNames[lastUnlocked]} · {t.shell.unlocked}
+              <McImage name="xp" size={18} /> {t.shell.trophyNames[lastUnlocked]} · {t.shell.unlocked}
             </>
           ) : null}
         </span>
@@ -76,7 +76,7 @@ export default function StatusBar() {
                 {trophyIds.map((id) => (
                   <li key={id} data-done={unlocked.has(id)}>
                     <span className="trophy-icon" data-done={unlocked.has(id)}>
-                      <PixelIcon name="xp" scale={2} />
+                      <McImage name="xp" size={18} />
                     </span>
                     {t.shell.trophyNames[id]}
                   </li>
@@ -92,7 +92,7 @@ export default function StatusBar() {
             aria-controls="trophy-panel"
             aria-label={panel === "trophies" ? t.shell.trophiesClose : t.shell.trophiesOpen}
           >
-            <PixelIcon name="xp" scale={2} />
+            <McImage name="xp" size={18} />
             <span className="sb-count">{unlocked.size}/{total}</span>
           </button>
         </div>
