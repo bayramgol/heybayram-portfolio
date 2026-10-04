@@ -1,9 +1,11 @@
 "use client";
 
 import { useLang } from "../context/LangContext";
+import { site } from "../data/site";
+import JsonCode from "./JsonCode";
 
 export default function About() {
-  const { t } = useLang();
+  const { t, profile } = useLang();
 
   return (
     <section className="section" id="hakkimda">
@@ -25,20 +27,20 @@ export default function About() {
             <p>{t.about.p3}</p>
           </div>
 
-          <div className="code-block">
-            <span className="c-key">const</span> developer = <span className="c-punc">{'{'}</span>
-            <br />
-            &nbsp;&nbsp;name: <span className="c-str">&quot;Bayram Göl&quot;</span>,
-            <br />
-            &nbsp;&nbsp;role: <span className="c-str">&quot;Software Development Specialist&quot;</span>,
-            <br />
-            &nbsp;&nbsp;stack: [<span className="c-str">&quot;Java&quot;</span>, <span className="c-str">&quot;Spring Boot&quot;</span>, <span className="c-str">&quot;Angular&quot;</span>],
-            <br />
-            &nbsp;&nbsp;mindset: <span className="c-str">&quot;clean-code-first&quot;</span>,
-            <br />
-            &nbsp;&nbsp;location: <span className="c-str">&quot;Istanbul, TR&quot;</span>
-            <br />
-            <span className="c-punc">{'}'}</span>;
+          <div className="code-block" aria-hidden="true">
+            <pre className="code-view">
+              <JsonCode
+                prefix="const developer = "
+                suffix=";"
+                entries={[
+                  ["name", profile.name],
+                  ["role", profile.title],
+                  ["stack", [...site.headlineStack]],
+                  ["mindset", "clean-code-first"],
+                  ["location", profile.location],
+                ]}
+              />
+            </pre>
           </div>
         </div>
       </div>

@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useLang } from "../context/LangContext";
+import { site } from "../data/site";
 
-const githubUser = "bayramgol";
+const githubUser = site.contact.githubUser;
 
 type GitHubUser = {
   public_repos: number;
@@ -80,7 +81,7 @@ export default function GithubActivity() {
           isLoading: false,
           hasError: false,
         });
-      } catch (error) {
+      } catch {
         if (controller.signal.aborted) return;
         setState({ user: null, repos: [], isLoading: false, hasError: true });
       }
@@ -138,10 +139,11 @@ export default function GithubActivity() {
               <h3>{state.hasError ? t.github.errorTitle : "activity.json"}</h3>
             </div>
             <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="github-open-link">
-              {t.github.openProfile} ↗
+              {t.github.openProfile} <span aria-hidden="true">↗</span>
             </a>
           </div>
 
+          <div aria-live="polite" aria-busy={state.isLoading}>
           {state.isLoading ? (
             <div className="github-loading">{t.github.loading}</div>
           ) : state.hasError ? (
@@ -193,6 +195,7 @@ export default function GithubActivity() {
               </div>
             </>
           )}
+          </div>
 
           <div className="github-source">{t.github.source}</div>
         </div>

@@ -1,12 +1,36 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { LangProvider } from "./context/LangContext";
+import { ShellProvider } from "./context/ShellContext";
+import { site } from "./data/site";
+
+const mono = JetBrains_Mono({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains",
+  display: "swap",
+});
+
+const sans = Space_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "700"],
+  variable: "--font-space",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Bayram Göl — Software Development Specialist",
+  title: `${site.name} — ${site.title}`,
   description:
     "Bayram Göl developer profile. Java, Spring Boot, Angular, microservices, DevOps, and GitHub activity.",
 };
+
+export const viewport: Viewport = {
+  themeColor: "#17130f",
+};
+
+// Sayfa boyanmadan önce tema ve dil belirlenir; yanıp sönme olmaz.
+const initScript = `try{var d=document.documentElement,t=localStorage.getItem("theme");if(t!=="light"){t="dark"}d.dataset.theme=t;if(localStorage.getItem("tone")==="cool"){d.dataset.tone="cool"}var a=localStorage.getItem("accent");if(/^(amber|terracotta|rose|mint)$/.test(a||"")){d.dataset.accent=a}var l=localStorage.getItem("lang");if(l==="en"||l==="tr"){d.lang=l}else if(!/^tr/i.test(navigator.language||"tr")){d.lang="en"}}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -14,17 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr">
+    <html lang="tr" className={`${mono.variable} ${sans.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <script dangerouslySetInnerHTML={{ __html: initScript }} />
       </head>
       <body>
-        <LangProvider>{children}</LangProvider>
+        <LangProvider>
+          <ShellProvider>{children}</ShellProvider>
+        </LangProvider>
       </body>
     </html>
   );

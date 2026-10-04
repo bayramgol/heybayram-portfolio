@@ -1,3 +1,5 @@
+import { site, type TrophyId } from "./site";
+
 export type Lang = "tr" | "en";
 
 export type Dictionary = {
@@ -8,14 +10,19 @@ export type Dictionary = {
     github: string;
     about: string;
     contact: string;
+    skip: string;
+    homeLabel: string;
+    menuOpen: string;
+    menuClose: string;
+    themeToLight: string;
+    themeToDark: string;
+    langLabel: string;
   };
   hero: {
     whoami: string;
     name: string;
     nameAccent: string;
     role: string;
-    catStatus: string;
-    quote: string;
     ctaPrimary: string;
     ctaSecondary: string;
     sideTitle: string;
@@ -75,6 +82,29 @@ export type Dictionary = {
     linkedin: string;
     footer: string;
   };
+  shell: {
+    explorer: string;
+    summary: string;
+    portraitAlt: string;
+    links: string;
+    sendEmail: string;
+    lineLabel: string;
+    trophies: string;
+    trophiesOpen: string;
+    trophiesClose: string;
+    unlocked: string;
+    trophyNames: Record<TrophyId, string>;
+  };
+  palette: {
+    open: string;
+    close: string;
+    title: string;
+    tone: string;
+    toneWarm: string;
+    toneCool: string;
+    accent: string;
+    accents: Record<"terracotta" | "amber" | "rose" | "sky" | "mint", string>;
+  };
 };
 
 export type SkillGroup = {
@@ -114,26 +144,30 @@ export const dictionary: Record<Lang, Dictionary> = {
       github: "github",
       about: "hakkımda",
       contact: "iletişim",
+      skip: "İçeriğe geç",
+      homeLabel: "Bayram Göl, ana sayfa",
+      menuOpen: "Menüyü aç",
+      menuClose: "Menüyü kapat",
+      themeToLight: "Açık temaya geç",
+      themeToDark: "Koyu temaya geç",
+      langLabel: "Switch to English",
     },
     hero: {
       whoami: "whoami",
-      name: "Bayram",
-      nameAccent: "Göl",
-      role: "Software Development Specialist · Java / Spring Boot / Angular",
-      catStatus: "cat focus.txt",
-      quote:
-        "Java Spring Boot ve Angular odağında; API, mikroservis ve kurumsal uygulama geliştirme tarafında çalışan software developer.",
+      name: site.firstName,
+      nameAccent: site.lastName,
+      role: `${site.title} · ${site.headlineStack.join(" / ")}`,
       ctaPrimary: "./open-profile.sh",
       ctaSecondary: "iletişime geç →",
       sideTitle: "active_stack",
-      sideOne: "Java / Spring Boot",
-      sideTwo: "Angular / TypeScript",
-      sideThree: "Docker / Jenkins",
+      sideOne: site.highlights[0],
+      sideTwo: site.highlights[1],
+      sideThree: site.highlights[2],
     },
     profile: {
       eyebrow: "profile --json",
       title: "Profil Özeti",
-      subtitle: "Dosya gezgini gibi açılan sade JSON panelleri. Proje listesi ve metrik kartı yok.",
+      subtitle: "Kısa profil özeti, teknoloji yığını ve iletişim bilgileri; JSON olarak.",
       explorerTitle: "file explorer",
       files: {
         profile: "profile.json",
@@ -144,15 +178,15 @@ export const dictionary: Record<Lang, Dictionary> = {
     skills: {
       eyebrow: "stack --compact",
       title: "Yetenekler",
-      subtitle: "Temel ve güçlü teknolojiler; abartısız, kompakt ve okunabilir.",
+      subtitle: "Günlük işimde kullandığım teknolojiler.",
     },
     github: {
       eyebrow: "github --activity",
       title: "GitHub Aktivitesi",
-      subtitle: "Proje adı listelemeden GitHub profilinden genel aktivite ve dil dağılımı.",
-      loading: "GitHub verisi çekiliyor...",
+      subtitle: "GitHub profilimden genel aktivite ve dil dağılımı.",
+      loading: "GitHub verisi yükleniyor…",
       errorTitle: "GitHub verisi şu an çekilemedi",
-      errorText: "Kart yine de profil linkine yönlenir. Daha sonra otomatik tekrar denenir.",
+      errorText: "Profil bağlantısı çalışmaya devam ediyor; sayfayı yenileyerek tekrar deneyebilirsin.",
       openProfile: "GitHub profilini aç",
       publicRepos: "Public Repo",
       followers: "Followers",
@@ -181,7 +215,38 @@ export const dictionary: Record<Lang, Dictionary> = {
       email: "Email",
       github: "GitHub",
       linkedin: "LinkedIn",
-      footer: "© 2026 Bayram Göl · built with Next.js",
+      footer: `© 2026 ${site.name} · built with Next.js`,
+    },
+    shell: {
+      explorer: "gezgin",
+      summary: "kısa özet",
+      portraitAlt: "Bayram Göl portresi",
+      links: "bağlantılar",
+      sendEmail: "E-posta gönder",
+      lineLabel: "satır",
+      trophies: "Başarımlar",
+      trophiesOpen: "Başarımları aç",
+      trophiesClose: "Başarımları kapat",
+      unlocked: "açıldı",
+      trophyNames: {
+        profil: "profile.json okundu",
+        yetenekler: "skills.json okundu",
+        github: "activity.json okundu",
+        hakkimda: "about.md okundu",
+        iletisim: "contact.sh bulundu",
+        theme: "Tema değiştirildi",
+        lang: "Dil değiştirildi",
+      },
+    },
+    palette: {
+      open: "Renk denemesini aç",
+      close: "Renk denemesini kapat",
+      title: "renk denemesi",
+      tone: "Genel hava",
+      toneWarm: "Sıcak",
+      toneCool: "Serin",
+      accent: "Sadece vurgu",
+      accents: { terracotta: "Kiremit", amber: "Kehribar", rose: "Gül", sky: "Gök", mint: "Nane" },
     },
   },
   en: {
@@ -192,26 +257,30 @@ export const dictionary: Record<Lang, Dictionary> = {
       github: "github",
       about: "about",
       contact: "contact",
+      skip: "Skip to content",
+      homeLabel: "Bayram Göl, home",
+      menuOpen: "Open menu",
+      menuClose: "Close menu",
+      themeToLight: "Switch to light theme",
+      themeToDark: "Switch to dark theme",
+      langLabel: "Türkçe'ye geç",
     },
     hero: {
       whoami: "whoami",
-      name: "Bayram",
-      nameAccent: "Göl",
-      role: "Software Development Specialist · Java / Spring Boot / Angular",
-      catStatus: "cat focus.txt",
-      quote:
-        "Software developer focused on Java Spring Boot and Angular; building APIs, microservices, and enterprise applications.",
+      name: site.firstName,
+      nameAccent: site.lastName,
+      role: `${site.title} · ${site.headlineStack.join(" / ")}`,
       ctaPrimary: "./open-profile.sh",
       ctaSecondary: "get in touch →",
       sideTitle: "active_stack",
-      sideOne: "Java / Spring Boot",
-      sideTwo: "Angular / TypeScript",
-      sideThree: "Docker / Jenkins",
+      sideOne: site.highlights[0],
+      sideTwo: site.highlights[1],
+      sideThree: site.highlights[2],
     },
     profile: {
       eyebrow: "profile --json",
       title: "Profile Summary",
-      subtitle: "Clean JSON panels with a file-explorer feel. No project list or metric cards.",
+      subtitle: "A short profile summary, tech stack, and contact details, shown as JSON.",
       explorerTitle: "file explorer",
       files: {
         profile: "profile.json",
@@ -222,15 +291,15 @@ export const dictionary: Record<Lang, Dictionary> = {
     skills: {
       eyebrow: "stack --compact",
       title: "Skills",
-      subtitle: "Core technologies, kept simple, compact, and readable.",
+      subtitle: "Technologies I use day to day.",
     },
     github: {
       eyebrow: "github --activity",
       title: "GitHub Activity",
-      subtitle: "General GitHub activity and language overview without listing project names.",
-      loading: "Fetching GitHub data...",
+      subtitle: "Overall activity and language breakdown from my GitHub profile.",
+      loading: "Loading GitHub data…",
       errorTitle: "GitHub data could not be loaded",
-      errorText: "The card still links to the profile. It will retry automatically later.",
+      errorText: "The profile link still works; reload the page to try again.",
       openProfile: "Open GitHub profile",
       publicRepos: "Public Repos",
       followers: "Followers",
@@ -259,106 +328,71 @@ export const dictionary: Record<Lang, Dictionary> = {
       email: "Email",
       github: "GitHub",
       linkedin: "LinkedIn",
-      footer: "© 2026 Bayram Göl · built with Next.js",
+      footer: `© 2026 ${site.name} · built with Next.js`,
+    },
+    shell: {
+      explorer: "explorer",
+      summary: "quick summary",
+      portraitAlt: "Portrait of Bayram Göl",
+      links: "links",
+      sendEmail: "Send an email",
+      lineLabel: "ln",
+      trophies: "Trophies",
+      trophiesOpen: "Open trophies",
+      trophiesClose: "Close trophies",
+      unlocked: "unlocked",
+      trophyNames: {
+        profil: "Read profile.json",
+        yetenekler: "Read skills.json",
+        github: "Read activity.json",
+        hakkimda: "Read about.md",
+        iletisim: "Found contact.sh",
+        theme: "Changed the theme",
+        lang: "Changed the language",
+      },
+    },
+    palette: {
+      open: "Open color test",
+      close: "Close color test",
+      title: "color test",
+      tone: "Overall tone",
+      toneWarm: "Warm",
+      toneCool: "Cool",
+      accent: "Accent only",
+      accents: { terracotta: "Terracotta", amber: "Amber", rose: "Rose", sky: "Sky", mint: "Mint" },
     },
   },
 };
 
-export const profileJson: Record<Lang, ProfileJson> = {
-  tr: {
-    name: "Bayram Göl",
-    title: "Software Development Specialist",
-    location: "Istanbul, TR",
-    focus: ["backend", "api-design", "microservices", "full-stack"],
-    backend: ["Java", "Spring Boot", "Spring Framework", "REST API", "OOP", "Microservices"],
-    frontend: ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
-    data: ["SQL", "NoSQL"],
-    devops: ["Git", "Docker", "Jenkins", "Linux", "Kubernetes", "Tomcat"],
-    tools: ["Grafana", "DigitalOcean", "CI/CD"],
-    language: "English B2 → C1",
-    contact: {
-      email: "bayram.gol66@gmail.com",
-      github: "github.com/bayramgol",
-      linkedin: "linkedin.com/in/bayramgol",
-    },
-  },
-  en: {
-    name: "Bayram Göl",
-    title: "Software Development Specialist",
-    location: "Istanbul, TR",
-    focus: ["backend", "api-design", "microservices", "full-stack"],
-    backend: ["Java", "Spring Boot", "Spring Framework", "REST API", "OOP", "Microservices"],
-    frontend: ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
-    data: ["SQL", "NoSQL"],
-    devops: ["Git", "Docker", "Jenkins", "Linux", "Kubernetes", "Tomcat"],
-    tools: ["Grafana", "DigitalOcean", "CI/CD"],
-    language: "English B2 → C1",
-    contact: {
-      email: "bayram.gol66@gmail.com",
-      github: "github.com/bayramgol",
-      linkedin: "linkedin.com/in/bayramgol",
-    },
+// Aşağıdaki veriler dilden bağımsız; `site.ts`'ten türetilir ve iki dile aynen verilir.
+const profile: ProfileJson = {
+  name: site.name,
+  title: site.title,
+  location: site.location,
+  focus: [...site.focus],
+  backend: [...site.stack.backend],
+  frontend: [...site.stack.frontend],
+  data: [...site.stack.data],
+  devops: [...site.stack.devops],
+  tools: [...site.stack.tools],
+  language: site.englishLevel,
+  contact: {
+    email: site.contact.email,
+    github: site.contact.githubDisplay,
+    linkedin: site.contact.linkedinDisplay,
   },
 };
 
-export const skillGroups: Record<Lang, SkillGroup[]> = {
-  tr: [
-    {
-      group: "Backend",
-      items: ["Java", "Spring Boot", "Spring Framework", "REST API", "OOP", "Microservices"],
-    },
-    {
-      group: "Frontend",
-      items: ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
-    },
-    {
-      group: "Data",
-      items: ["SQL", "NoSQL"],
-    },
-    {
-      group: "DevOps",
-      items: ["Git", "Docker", "Jenkins", "Linux", "Kubernetes", "Tomcat"],
-    },
-    {
-      group: "Tools",
-      items: ["Grafana", "DigitalOcean", "CI/CD"],
-    },
-  ],
-  en: [
-    {
-      group: "Backend",
-      items: ["Java", "Spring Boot", "Spring Framework", "REST API", "OOP", "Microservices"],
-    },
-    {
-      group: "Frontend",
-      items: ["Angular", "TypeScript", "JavaScript", "HTML", "CSS"],
-    },
-    {
-      group: "Data",
-      items: ["SQL", "NoSQL"],
-    },
-    {
-      group: "DevOps",
-      items: ["Git", "Docker", "Jenkins", "Linux", "Kubernetes", "Tomcat"],
-    },
-    {
-      group: "Tools",
-      items: ["Grafana", "DigitalOcean", "CI/CD"],
-    },
-  ],
-};
+const groups: SkillGroup[] = [
+  { group: "Backend", items: [...site.stack.backend] },
+  { group: "Frontend", items: [...site.stack.frontend] },
+  { group: "Data", items: [...site.stack.data] },
+  { group: "DevOps", items: [...site.stack.devops] },
+  { group: "Tools", items: [...site.stack.tools] },
+];
 
-export const activityItems: Record<Lang, ActivityItem[]> = {
-  tr: [
-    { label: "primary", value: "Java / Spring Boot" },
-    { label: "frontend", value: "Angular / TypeScript" },
-    { label: "delivery", value: "Jenkins / Docker" },
-    { label: "observe", value: "Grafana / Logs" },
-  ],
-  en: [
-    { label: "primary", value: "Java / Spring Boot" },
-    { label: "frontend", value: "Angular / TypeScript" },
-    { label: "delivery", value: "Jenkins / Docker" },
-    { label: "observe", value: "Grafana / Logs" },
-  ],
-};
+const activity: ActivityItem[] = site.activity.map((item) => ({ ...item }));
+
+export const profileJson: Record<Lang, ProfileJson> = { tr: profile, en: profile };
+export const skillGroups: Record<Lang, SkillGroup[]> = { tr: groups, en: groups };
+export const activityItems: Record<Lang, ActivityItem[]> = { tr: activity, en: activity };

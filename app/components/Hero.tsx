@@ -1,61 +1,37 @@
 "use client";
 
-import type { MouseEvent } from "react";
+import type { CSSProperties } from "react";
 import { useLang } from "../context/LangContext";
+import Portrait from "./Portrait";
+
+const delay = (seconds: number) => ({ "--d": `${seconds}s` }) as CSSProperties;
 
 export default function Hero() {
-  const { t, activity } = useLang();
-
-  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {
-    const el = event.currentTarget;
-    const rect = el.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty("--mx", `${x}%`);
-    el.style.setProperty("--my", `${y}%`);
-  };
+  const { t } = useLang();
 
   return (
     <header className="hero" id="top">
-      <div className="container hero-grid">
-        <div>
-          <div className="terminal-window" onMouseMove={handleMouseMove}>
-            <div className="terminal-titlebar">
-              <div className="dot dot-r" />
-              <div className="dot dot-y" />
-              <div className="dot dot-g" />
-              <span>zsh — 120×32</span>
-            </div>
-            <div className="terminal-body">
-              <div className="terminal-line" style={{ animationDelay: "0.1s" }}>
-                <span className="prompt">visitor@site</span>
-                <span className="cmd">:~$ {t.hero.whoami}</span>
-              </div>
-              <p
-                className="terminal-out"
-                style={{ animation: "fadeIn 0.4s forwards", animationDelay: "0.5s", opacity: 0 }}
-              >
-                <span className="hero-name">
-                  {t.hero.name} <span className="accent-text">{t.hero.nameAccent}</span>
-                  <span className="cursor" />
-                </span>
-                <br />
-                <span className="hero-role">{t.hero.role}</span>
-              </p>
-              <div className="terminal-line" style={{ animationDelay: "0.9s" }}>
-                <span className="prompt">visitor@site</span>
-                <span className="cmd">:~$ {t.hero.catStatus}</span>
-              </div>
-              <p
-                className="terminal-out hero-quote"
-                style={{ animation: "fadeIn 0.4s forwards", animationDelay: "1.2s", opacity: 0 }}
-              >
-                {t.hero.quote}
-              </p>
-            </div>
-          </div>
+      <div className="hero-inner">
+        <div className="hero-text">
+          <p className="hero-prompt reveal" style={delay(0.05)}>
+            <span className="prompt">visitor@site</span>
+            <span className="cmd">:~$ {t.hero.whoami}</span>
+          </p>
 
-          <div className="hero-cta">
+          <h1 className="hero-name reveal" style={delay(0.2)}>
+            <span className="outline">{t.hero.name}</span>
+            <span className="accent-text">{t.hero.nameAccent}<span className="cursor" aria-hidden="true" /></span>
+          </h1>
+
+          <p className="hero-role reveal" style={delay(0.35)}>{t.hero.role}</p>
+
+          <ul className="hero-chips reveal" style={delay(0.5)}>
+            <li>{t.hero.sideOne}</li>
+            <li>{t.hero.sideTwo}</li>
+            <li>{t.hero.sideThree}</li>
+          </ul>
+
+          <div className="hero-cta reveal" style={delay(0.6)}>
             <a href="#profil" className="btn btn-primary">
               {t.hero.ctaPrimary}
             </a>
@@ -65,25 +41,11 @@ export default function Hero() {
           </div>
         </div>
 
-        <aside className="hero-side-card" aria-label="Core stack">
-          <div className="side-card-top">
-            <span className="pulse" />
-            {t.hero.sideTitle}
+        <div className="portrait-slot in-hero" id="portrait-hero-slot">
+          <div className="portrait-static">
+            <Portrait alt={t.shell.portraitAlt} />
           </div>
-          <div className="stack-orbit">
-            <span>{t.hero.sideOne}</span>
-            <span>{t.hero.sideTwo}</span>
-            <span>{t.hero.sideThree}</span>
-          </div>
-          <div className="activity-list">
-            {activity.map((item) => (
-              <div className="activity-row" key={item.label}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </div>
-            ))}
-          </div>
-        </aside>
+        </div>
       </div>
     </header>
   );
