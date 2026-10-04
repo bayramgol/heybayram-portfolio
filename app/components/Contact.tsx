@@ -1,6 +1,7 @@
 "use client";
 
 import { useLang } from "../context/LangContext";
+import { site } from "../data/site";
 
 export default function Contact() {
   const { t } = useLang();
@@ -13,11 +14,11 @@ export default function Contact() {
             <h2>{t.contact.title}</h2>
             <p>{t.contact.subtitle}</p>
             <div className="contact-links">
-              <a href="mailto:bayram.gol66@gmail.com" className="btn btn-primary">
+              <a href={`mailto:${site.contact.email}`} className="btn btn-primary">
                 {t.contact.email}
               </a>
               <a
-                href="https://github.com/bayramgol"
+                href={site.contact.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"
@@ -25,7 +26,7 @@ export default function Contact() {
                 {t.contact.github}
               </a>
               <a
-                href="https://www.linkedin.com/in/bayramgol"
+                href={site.contact.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-ghost"

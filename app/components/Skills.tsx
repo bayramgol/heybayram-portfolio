@@ -1,19 +1,9 @@
 "use client";
 
-import type { MouseEvent } from "react";
 import { useLang } from "../context/LangContext";
 
 export default function Skills() {
   const { t, skills } = useLang();
-
-  const handleMouseMove = (event: MouseEvent<HTMLSpanElement>) => {
-    const el = event.currentTarget;
-    const rect = el.getBoundingClientRect();
-    const x = ((event.clientX - rect.left) / rect.width) * 100;
-    const y = ((event.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty("--mx", `${x}%`);
-    el.style.setProperty("--my", `${y}%`);
-  };
 
   return (
     <section className="section" id="yetenekler">
@@ -28,13 +18,13 @@ export default function Skills() {
           {skills.map((group) => (
             <article className="skill-group" key={group.group}>
               <h3>{group.group}</h3>
-              <div className="skills-grid compact">
+              <ul className="skills-grid">
                 {group.items.map((skill) => (
-                  <span className="skill-pill" key={skill} onMouseMove={handleMouseMove}>
+                  <li className="skill-pill" key={skill}>
                     {skill}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </article>
           ))}
         </div>

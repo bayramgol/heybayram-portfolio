@@ -1,73 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { useLang } from "../context/LangContext";
+import JsonCode, { type JsonEntry } from "./JsonCode";
 
 type FileKey = "profile" | "stack" | "contact";
 
-function JsonArray({ items }: { items: string[] }) {
-  return (
-    <>
-      [
-      {items.map((item, index) => (
-        <span key={item}>
-          <span className="c-str">&quot;{item}&quot;</span>
-          {index < items.length - 1 ? <span className="c-punc">, </span> : null}
-        </span>
-      ))}
-      ]
-    </>
-  );
-}
+const fileKeys: FileKey[] = ["profile", "stack", "contact"];
 
 export default function ProfileJson() {
   const { t, profile } = useLang();
   const [activeFile, setActiveFile] = useState<FileKey>("profile");
+  const tabRefs = useRef<Record<FileKey, HTMLButtonElement | null>>({
+    profile: null,
+    stack: null,
+    contact: null,
+  });
 
-  const files: { key: FileKey; label: string }[] = [
-    { key: "profile", label: t.profile.files.profile },
-    { key: "stack", label: t.profile.files.stack },
-    { key: "contact", label: t.profile.files.contact },
-  ];
+  const entries: Record<FileKey, JsonEntry[]> = {
+    profile: [
+      ["name", profile.name],
+      ["title", profile.title],
+      ["location", profile.location],
+      ["focus", profile.focus],
+      ["language", profile.language],
+    ],
+    stack: [
+      ["backend", profile.backend],
+      ["frontend", profile.frontend],
+      ["data", profile.data],
+      ["devops", profile.devops],
+      ["tools", profile.tools],
+    ],
+    contact: [
+      ["email", profile.contact.email],
+      ["github", profile.contact.github],
+      ["linkedin", profile.contact.linkedin],
+    ],
+  };
 
-  const renderJson = () => {
-    if (activeFile === "stack") {
-      return (
-        <code>
-          <span className="c-punc">{'{'}</span>{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;backend&quot;</span>: <JsonArray items={profile.backend} />,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;frontend&quot;</span>: <JsonArray items={profile.frontend} />,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;data&quot;</span>: <JsonArray items={profile.data} />,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;devops&quot;</span>: <JsonArray items={profile.devops} />,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;tools&quot;</span>: <JsonArray items={profile.tools} />{"\n"}
-          <span className="c-punc">{'}'}</span>
-        </code>
-      );
-    }
-
-    if (activeFile === "contact") {
-      return (
-        <code>
-          <span className="c-punc">{'{'}</span>{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;email&quot;</span>: <span className="c-str">&quot;{profile.contact.email}&quot;</span>,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;github&quot;</span>: <span className="c-str">&quot;{profile.contact.github}&quot;</span>,{"\n"}
-          &nbsp;&nbsp;<span className="c-key">&quot;linkedin&quot;</span>: <span className="c-str">&quot;{profile.contact.linkedin}&quot;</span>{"\n"}
-          <span className="c-punc">{'}'}</span>
-        </code>
-      );
-    }
-
-    return (
-      <code>
-        <span className="c-punc">{'{'}</span>{"\n"}
-        &nbsp;&nbsp;<span className="c-key">&quot;name&quot;</span>: <span className="c-str">&quot;{profile.name}&quot;</span>,{"\n"}
-        &nbsp;&nbsp;<span className="c-key">&quot;title&quot;</span>: <span className="c-str">&quot;{profile.title}&quot;</span>,{"\n"}
-        &nbsp;&nbsp;<span className="c-key">&quot;location&quot;</span>: <span className="c-str">&quot;{profile.location}&quot;</span>,{"\n"}
-        &nbsp;&nbsp;<span className="c-key">&quot;focus&quot;</span>: <JsonArray items={profile.focus} />,{"\n"}
-        &nbsp;&nbsp;<span className="c-key">&quot;language&quot;</span>: <span className="c-str">&quot;{profile.language}&quot;</span>{"\n"}
-        <span className="c-punc">{'}'}</span>
-      </code>
-    );
+  // Ok tuşları sekmeler arasında gezinir (roving tabindex).
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const step = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    event.preventDefault();
+    const next = fileKeys[(index + step + fileKeys.length) % fileKeys.length];
+    setActiveFile(next);
+    tabRefs.current[next]?.focus();
   };
 
   return (
@@ -80,27 +59,46 @@ export default function ProfileJson() {
         </div>
 
         <div className="profile-json-layout">
-          <aside className="file-tree" aria-label={t.profile.explorerTitle}>
-            <div className="file-tree-title">{t.profile.explorerTitle}</div>
-            {files.map((file) => (
-              <button
-                className={`file-node ${activeFile === file.key ? "active" : ""}`}
-                key={file.key}
-                onClick={() => setActiveFile(file.key)}
-                type="button"
-              >
-                <span>{activeFile === file.key ? "▾" : "▸"}</span> {file.label}
-              </button>
-            ))}
-          </aside>
-
-          <article className="json-window">
-            <div className="json-tab-row">
-              <span className="json-tab active">{t.profile.files[activeFile]}</span>
-              <span className="json-dot" />
+          <div className="file-tree">
+            <div className="file-tree-title" aria-hidden="true">{t.profile.explorerTitle}</div>
+            <div role="tablist" aria-orientation="vertical" aria-label={t.profile.explorerTitle}>
+              {fileKeys.map((key, index) => (
+                <button
+                  className="file-node"
+                  key={key}
+                  ref={(node) => {
+                    tabRefs.current[key] = node;
+                  }}
+                  type="button"
+                  role="tab"
+                  id={`tab-${key}`}
+                  aria-selected={activeFile === key}
+                  aria-controls="profile-panel"
+                  tabIndex={activeFile === key ? 0 : -1}
+                  onClick={() => setActiveFile(key)}
+                  onKeyDown={(event) => handleKeyDown(event, index)}
+                >
+                  <span aria-hidden="true">{activeFile === key ? "▾" : "▸"}</span>
+                  {t.profile.files[key]}
+                </button>
+              ))}
             </div>
-            <pre aria-label={`${t.profile.files[activeFile]} JSON`}>{renderJson()}</pre>
-          </article>
+          </div>
+
+          <div className="json-window">
+            <div className="json-tab-row" aria-hidden="true">
+              <span className="json-tab">{t.profile.files[activeFile]}</span>
+            </div>
+            <pre
+              className="code-view"
+              id="profile-panel"
+              role="tabpanel"
+              aria-labelledby={`tab-${activeFile}`}
+              tabIndex={0}
+            >
+              <JsonCode entries={entries[activeFile]} />
+            </pre>
+          </div>
         </div>
       </div>
     </section>
